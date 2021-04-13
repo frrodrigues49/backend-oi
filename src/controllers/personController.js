@@ -3,13 +3,14 @@ const {
   getAll,
   getById,
   created,
-  updated
+  updated,
+  deleted
 } = require("../repositories/personRepository");
 const Person = require("../models/Person");
 const authMiddleware = require("../middleware/auth");
 const router = express.Router();
 
-router.use(authMiddleware);
+// router.use(authMiddleware);
 
 //index
 router.get("/", async (req, res) => {
@@ -29,6 +30,11 @@ router.post("/", async (req, res) => {
 //update
 router.put("/:id", async (req, res) => {
   await updated(Person, req, res);
+});
+
+//delete
+router.delete("/:id", async (req, res) => {
+  await deleted(Person, req, res);
 });
 
 module.exports = app => app.use("/person", router);

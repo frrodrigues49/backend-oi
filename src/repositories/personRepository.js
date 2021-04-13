@@ -39,3 +39,13 @@ exports.updated = async (model, req, res) => {
     msg_error(res, 400, "Updated failed", err);
   }
 };
+
+exports.deleted = async (model, req, res) => {
+  try {
+    const data = await model.findByIdAndDelete(req.params.id);
+
+    msg_success(res, 200, { peoples: data });
+  } catch (err) {
+    msg_error(res, 400, "Deleted failed", err);
+  }
+};
