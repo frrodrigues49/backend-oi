@@ -2,7 +2,7 @@ const { msg_success, msg_error } = require("../helpers/messages");
 
 exports.getAll = async (model, req, res) => {
   try {
-    const data = await model.find();
+    const data = await model.find().sort({ createdAt: -1 });
     msg_success(res, 200, { peoples: data });
   } catch (err) {
     msg_error(res, 400, "Unable to list peoples", err);

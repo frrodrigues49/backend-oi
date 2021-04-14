@@ -1,15 +1,11 @@
 const mongoose = require("../database");
 
-const UfSchema = new mongoose.Schema({
-  code: {
-    type: Number,
-    require: true
-  },
-  name: {
+const CitySchema = new mongoose.Schema({
+  uf: {
     type: String,
     require: true
   },
-  uf: {
+  name: {
     type: String,
     require: true
   },
@@ -19,5 +15,5 @@ const UfSchema = new mongoose.Schema({
   }
 });
 
-const Uf = mongoose.model("Uf", UfSchema);
-module.exports = Uf;
+const City = mongoose.model("City", CitySchema);
+module.exports = City;
